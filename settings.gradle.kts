@@ -27,7 +27,7 @@ dependencyResolutionManagement {
             url = uri("https://maven.pkg.github.com/FastPix/android-data-exo-player-sdk")
             credentials {
                 val props = java.util.Properties()
-                val localPropsFile = file("${rootDir}/local.properties")
+                val localPropsFile = file("$rootDir/local.properties")
 
                 if (localPropsFile.exists()) {
                     props.load(localPropsFile.inputStream())

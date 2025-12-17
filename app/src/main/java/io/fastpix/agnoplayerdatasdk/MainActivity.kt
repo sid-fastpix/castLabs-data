@@ -21,7 +21,6 @@ import com.castlabs.android.player.models.VideoTrackQuality
 import io.fastpix.agnoplayerdatasdk.databinding.ActivityMainBinding
 import io.fastpix.castlabs_player_data.FastPixBaseCastLabs
 import io.fastpix.castlabs_player_data.src.model.CustomerData
-import io.fastpix.data.domain.model.PlayerDataDetails
 import io.fastpix.data.domain.model.VideoDataDetails
 import java.util.Locale
 import java.util.UUID
@@ -82,7 +81,7 @@ class MainActivity : AppCompatActivity() {
         val videoDataDetails = VideoDataDetails(
             videoId = UUID.randomUUID().toString(),
             videoTitle = videoModel?.id,
-            videoCDN = "cloudflare"
+            videoCDN = "cloudflare",
         )
         val customerData = CustomerData(
             workspaceId = "1109888358169935873",
@@ -93,7 +92,7 @@ class MainActivity : AppCompatActivity() {
             playerView = binding.castLabsPlayerView,
             playerController = binding.castLabsPlayerView.playerController,
             enableLogging = true,
-            customerData = customerData
+            customerData = customerData,
         )
     }
 
@@ -142,22 +141,18 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onVideoSizeChanged(p0: Int, p1: Int, p2: Float) {
-
             }
 
             override fun onSeekRangeChanged(p0: Long, p1: Long) {
-
             }
 
             override fun onPlaybackPositionChanged(p0: Long) {
-
             }
 
             override fun onDisplayChanged(
                 p0: DisplayInfo?,
-                p1: Boolean
+                p1: Boolean,
             ) {
-
             }
 
             override fun onDurationChanged(p0: Long) {
@@ -167,21 +162,17 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onSpeedChanged(p0: Float) {
-
             }
 
             override fun onPlayerModelChanged() {
-
             }
 
             override fun onVideoKeyStatusChanged(p0: List<VideoTrackQuality?>) {
-
             }
 
             override fun onFullyBuffered() {
                 binding.loadingIndicator.isVisible = false
             }
-
         })
     }
 
@@ -349,7 +340,7 @@ class MainActivity : AppCompatActivity() {
         binding.currentTimeText.text = formatTime(currentMs)
 
         if (duration > 0 && binding.seekBar.max > 0) {
-            val durationMs = duration / 1000.0   // micro → milli
+            val durationMs = duration / 1000.0 // micro → milli
 
             // -------- Primary progress --------
             val playedFraction = currentMs / durationMs

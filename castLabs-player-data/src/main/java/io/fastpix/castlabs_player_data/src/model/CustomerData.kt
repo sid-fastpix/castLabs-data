@@ -11,7 +11,7 @@ data class CustomerData(
     var videoDetails: VideoDataDetails? = null,
     var playerDetails: PlayerDataDetails = PlayerDataDetails(
         BuildConfig.LIBRARY_PACKAGE_NAME,
-        BuildConfig.VERSION_NAME
+        BuildConfig.VERSION_NAME,
     ),
-    var customDataDetails: CustomDataDetails? = null
+    var customDataDetails: CustomDataDetails? = null,
 )

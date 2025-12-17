@@ -23,7 +23,7 @@ object Utils {
             PlayerEvents.PAUSE,
             PlayerEvents.VARIANT_CHANGED,
             PlayerEvents.SEEKING,
-            PlayerEvents.ERROR
+            PlayerEvents.ERROR,
         ),
         PlayerEvents.PLAYING to setOf(
             PlayerEvents.BUFFERING,
@@ -31,12 +31,12 @@ object Utils {
             PlayerEvents.ENDED,
             PlayerEvents.SEEKING,
             PlayerEvents.VARIANT_CHANGED,
-            PlayerEvents.ERROR
+            PlayerEvents.ERROR,
         ),
         PlayerEvents.BUFFERING to setOf(
             PlayerEvents.BUFFERED,
             PlayerEvents.ERROR,
-            PlayerEvents.VARIANT_CHANGED
+            PlayerEvents.VARIANT_CHANGED,
         ),
         PlayerEvents.BUFFERED to setOf(
             PlayerEvents.PAUSE,
@@ -44,24 +44,24 @@ object Utils {
             PlayerEvents.PLAYING,
             PlayerEvents.ENDED,
             PlayerEvents.ERROR,
-            PlayerEvents.VARIANT_CHANGED
+            PlayerEvents.VARIANT_CHANGED,
         ),
         PlayerEvents.PAUSE to setOf(
             PlayerEvents.SEEKING,
             PlayerEvents.PLAY,
             PlayerEvents.ENDED,
             PlayerEvents.ERROR,
-            PlayerEvents.VARIANT_CHANGED
+            PlayerEvents.VARIANT_CHANGED,
         ),
         PlayerEvents.SEEKING to setOf(
             PlayerEvents.SEEKED,
             PlayerEvents.ENDED,
             PlayerEvents.ERROR,
-            PlayerEvents.VARIANT_CHANGED
+            PlayerEvents.VARIANT_CHANGED,
         ),
         PlayerEvents.SEEKED to setOf(
             PlayerEvents.PLAY, PlayerEvents.ENDED, PlayerEvents.ERROR, PlayerEvents.VARIANT_CHANGED,
-            PlayerEvents.PLAYING, PlayerEvents.SEEKING
+            PlayerEvents.PLAYING, PlayerEvents.SEEKING,
         ),
         PlayerEvents.ENDED to setOf(
             PlayerEvents.PLAY,
@@ -71,8 +71,7 @@ object Utils {
         ),
         PlayerEvents.ERROR to setOf(
             PlayerEvents.PLAYING, PlayerEvents.PLAY, PlayerEvents.PAUSE,
-            PlayerEvents.BUFFERED
-        )
+            PlayerEvents.BUFFERED,
+        ),
     )
 }
-

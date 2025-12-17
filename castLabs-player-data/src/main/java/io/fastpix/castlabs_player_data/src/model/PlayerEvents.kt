@@ -10,5 +10,5 @@ enum class PlayerEvents {
     SEEKED,
     ENDED,
     VARIANT_CHANGED,
-    ERROR
+    ERROR,
 }
