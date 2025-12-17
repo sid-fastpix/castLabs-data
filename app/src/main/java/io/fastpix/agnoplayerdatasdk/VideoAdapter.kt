@@ -31,7 +31,7 @@ class VideoAdapter() :
         val binding = VideoRowBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
-            false
+            false,
         )
         return VideoViewHolder(binding)
     }

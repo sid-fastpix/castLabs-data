@@ -27,7 +27,7 @@ class FastPixBaseCastLabs(
     private val playerView: View,
     private val playerController: PlayerController,
     private val enableLogging: Boolean = false,
-    private val customerData: CustomerData
+    private val customerData: CustomerData,
 ) : PlayerListener, com.castlabs.android.player.PlayerListener {
 
     private val TAG = "FastPixBaseCastLabs"
@@ -40,7 +40,6 @@ class FastPixBaseCastLabs(
 
     // State machine for valid event transitions
     private var currentEventState: PlayerEvents? = null
-
 
     init {
         initializeFastPixSDK()
@@ -87,7 +86,6 @@ class FastPixBaseCastLabs(
                     dispatchPauseEvent()
                     dispatchSeekingEvent()
                 }
-
             }
 
             override fun onVideoSizeChanged(width: Int, height: Int, p2: Float) {
@@ -112,29 +110,25 @@ class FastPixBaseCastLabs(
 
             override fun onDisplayChanged(
                 p0: DisplayInfo?,
-                p1: Boolean
+                p1: Boolean,
             ) {
             }
 
             override fun onDurationChanged(p0: Long) {
-
             }
 
             override fun onSpeedChanged(p0: Float) {
-
             }
 
             override fun onPlayerModelChanged() {
             }
 
             override fun onVideoKeyStatusChanged(p0: List<VideoTrackQuality?>) {
-
             }
 
             override fun onFullyBuffered() {
                 dispatchBufferedEvent()
             }
-
         })
     }
 
@@ -233,7 +227,6 @@ class FastPixBaseCastLabs(
             } else {
                 fastPixDataSDK.dispatchEvent(PlayerEventType.ended)
             }
-
         }
     }
 
@@ -254,7 +247,6 @@ class FastPixBaseCastLabs(
             fastPixDataSDK.dispatchEvent(PlayerEventType.error)
         }
     }
-
 
     /**
      * Validates if the transition from current state to new state is valid
@@ -287,7 +279,7 @@ class FastPixBaseCastLabs(
             videoData = customerData.videoDetails,
             playerListener = this,
             enableLogging = enableLogging,
-            customData = customerData.customDataDetails
+            customData = customerData.customDataDetails,
         )
         fastPixDataSDK.initialize(sdkConfiguration, context)
     }
@@ -467,21 +459,17 @@ class FastPixBaseCastLabs(
 
     override fun onDisplayChanged(
         p0: DisplayInfo?,
-        p1: Boolean
+        p1: Boolean,
     ) {
-
     }
 
     override fun onDurationChanged(p0: Long) {
-
     }
 
     override fun onSpeedChanged(p0: Float) {
-
     }
 
     override fun onPlayerModelChanged() {
-
     }
 
     override fun onVideoKeyStatusChanged(p0: List<VideoTrackQuality?>) {
@@ -490,5 +478,4 @@ class FastPixBaseCastLabs(
     override fun onFullyBuffered() {
         dispatchBufferedEvent()
     }
-
 }

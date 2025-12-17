@@ -3,8 +3,6 @@ package io.fastpix.agnoplayerdatasdk
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
-
-
 val dummyData = listOf<DummyData>(
     DummyData(
         "Tears of Steel",
@@ -19,7 +17,6 @@ val dummyData = listOf<DummyData>(
         "https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8",
     ),
 )
-
 
 @Parcelize
 data class DummyData(
