@@ -1,0 +1,13 @@
+.gradle/
+build/
+*/build/
+
+local.properties
+android-data-core
+
+.idea/
+*.iml
+
+.DS_Store
+
+*.log

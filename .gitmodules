@@ -1,0 +1,3 @@
+[submodule "android-data-core"]
+	path = android-data-core
+	url = https://FastPix@dev.azure.com/FastPix/SDKs/_git/android-data-core
