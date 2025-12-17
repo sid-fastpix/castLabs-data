@@ -22,7 +22,7 @@
             android:value="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYWNrYWdlTmFtZSI6ImlvLmZhc3RwaXguYWdub3BsYXllcmRhdGFzZGsiLCJzaGExIjoiN0E6ODM6QkI6MzA6QkY6RjA6RDE6MEE6ODA6Mjg6NEU6MDA6MkI6QkM6Q0Y6MkU6MzM6OTA6Rjc6QkYiLCJraWQiOjQ0MzQsImlsdiI6ZmFsc2V9.ISTFaB5eVo_g8Uii_YwfmUVc3NF8q5Tys-QRpXoJ8KVqHOVmwU-qf_bnQ9KmZsR8JJ6Yydr_aQUXaLY5YPHhiO6TuHV_mr3WIjXoFuQVaVTLxarHyMYBIzbFWCNgpkHuxvfdkRyMkggIxPm1RpzHrs6dq_ZVBuzK3W9s_TwpnvaCcEUCoSqrpvLfQH8U3O308qZwaz3UykmK7-NCOadFbyv2GT6izjo-VBEZa-yrHOrNQRE-8nPAystrPNZ32y7y_mys4qvcx7-aXVljddSPsperuAivMdWQe9qHT43DLy_cpcyLdc69p3Ara48vTASSFzLM9N0Upf-UoqLs3a1q2w" />
 
         <activity
-            android:name="io.fastpix.bitmovin_data.VideoListScreen"
+            android:name=".VideoListScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

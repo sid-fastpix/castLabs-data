@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
         playerController = binding.castLabsPlayerView.playerController
 
         val playerConfig =
-            PlayerConfig.Builder(videoModel!!.url)
+            PlayerConfig.Builder(videoModel?.url.orEmpty())
                 .userID(UUID.randomUUID().toString())
                 .get()
 
