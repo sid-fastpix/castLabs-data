@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
     private fun initializeFastPixExo() {
         val videoDataDetails = VideoDataDetails(
             videoId = UUID.randomUUID().toString(),
-            videoTitle = videoModel?.id,
+            videoTitle = videoModel?.id.orEmpty(),
             videoCDN = "cloudflare"
         )
         val customerData = CustomerData(

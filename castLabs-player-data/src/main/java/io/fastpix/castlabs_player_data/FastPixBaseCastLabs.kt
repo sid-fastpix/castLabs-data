@@ -45,98 +45,9 @@ class FastPixBaseCastLabs(
     init {
         initializeFastPixSDK()
         playerController.addPlayerListener(this)
-        // setUpListener()
     }
 
     private var lastStablePositionUs: Long = -1
-    private var seekStartPositionUs: Long = -1
-
-    private fun setUpListener() {
-        playerController.addPlayerListener(object : com.castlabs.android.player.PlayerListener {
-            override fun onFatalErrorOccurred(error: CastlabsPlayerException) {
-                errorMessage = error.cause.toString()
-                errorCode = error.type.toString()
-                dispatchErrorEvent()
-            }
-
-            override fun onError(error: CastlabsPlayerException) {}
-
-            override fun onStateChanged(state: PlayerController.State) {
-                when (state) {
-                    PlayerController.State.Playing -> dispatchPlayingEvent()
-                    PlayerController.State.Idle -> dispatchPauseEvent()
-                    PlayerController.State.Preparing -> {
-                        dispatchViewBegin()
-                        dispatchPlayerReadyEvent()
-                        dispatchPlayEvent()
-                    }
-
-                    PlayerController.State.Buffering -> dispatchBufferingEvent()
-                    PlayerController.State.Pausing -> dispatchPauseEvent()
-                    PlayerController.State.Finished -> dispatchEndedEvent()
-                }
-            }
-
-            override fun onSeekTo(p0: Long) {
-                dispatchSeekingEvent()
-            }
-
-            override fun onSeekCompleted() {
-                if (!isSeeking) {
-                    isSeeking = true
-                    dispatchPauseEvent()
-                    dispatchSeekingEvent()
-                }
-
-            }
-
-            override fun onVideoSizeChanged(width: Int, height: Int, p2: Float) {
-                videoSourceWidth = width
-                videoSourceHeight = height
-                dispatchVariantChangeEvent()
-            }
-
-            override fun onSeekRangeChanged(p0: Long, p1: Long) {
-                Log.e(TAG, "onSeekRangeChanged: ")
-            }
-
-            override fun onPlaybackPositionChanged(position: Long) {
-                if (!isSeeking) {
-                    lastStablePositionUs = position
-                    return
-                }
-
-                isSeeking = false
-                dispatchSeekedEvent(position)
-            }
-
-            override fun onDisplayChanged(
-                p0: DisplayInfo?,
-                p1: Boolean
-            ) {
-            }
-
-            override fun onDurationChanged(p0: Long) {
-
-            }
-
-            override fun onSpeedChanged(p0: Float) {
-
-            }
-
-            override fun onPlayerModelChanged() {
-            }
-
-            override fun onVideoKeyStatusChanged(p0: List<VideoTrackQuality?>) {
-
-            }
-
-            override fun onFullyBuffered() {
-                dispatchBufferedEvent()
-            }
-
-        })
-    }
 
     private fun dispatchViewBegin() {
         if (enableLogging) {
@@ -306,98 +217,55 @@ class FastPixBaseCastLabs(
         return width.toInt()
     }
 
-    private fun getPlayer(): ExoPlayer? {
-        return playerController.player
-    }
+    private fun getPlayer(): ExoPlayer? = playerController.player
 
-    override fun videoSourceWidth(): Int? {
-        return videoSourceWidth
-    }
+    override fun videoSourceWidth(): Int? = videoSourceWidth
 
-    override fun videoSourceHeight(): Int? {
-        return videoSourceHeight
-    }
+    override fun videoSourceHeight(): Int? = videoSourceHeight
 
-    override fun playHeadTime(): Int? {
-        return getPlayer()?.currentPosition?.toInt() ?: 0
-    }
+    override fun playHeadTime(): Int? = getPlayer()?.currentPosition?.toInt() ?: 0
 
-    override fun mimeType(): String? {
-        return Utils.getMimeTypeFromUrl(playerController.playerConfig?.contentUrl)
-    }
+    override fun mimeType(): String? =
+        Utils.getMimeTypeFromUrl(playerController.playerConfig?.contentUrl)
 
-    override fun sourceFps(): String? {
-        return null
-    }
+    override fun sourceFps(): String? = null
 
-    override fun sourceAdvertisedBitrate(): String? {
-        return null
-    }
+    override fun sourceAdvertisedBitrate(): String? = null
 
-    override fun sourceAdvertiseFrameRate(): String? {
-        return null
-    }
+    override fun sourceAdvertiseFrameRate(): String? = null
 
-    override fun sourceDuration(): Int? {
-        return getPlayer()?.duration?.toInt()
-    }
+    override fun sourceDuration(): Int? = playerController.duration.toInt()
 
-    override fun isPause(): Boolean? {
-        return getPlayer()?.isPlaying == false
-    }
+    override fun isPause(): Boolean? = playerController.isPlaying == false
 
-    override fun isAutoPlay(): Boolean? {
-        return playerController.isPlayWhenReady
-    }
+    override fun isAutoPlay(): Boolean? = playerController.isPlayWhenReady
 
-    override fun preLoad(): Boolean? {
-        return false
-    }
+    override fun preLoad(): Boolean? = false
 
-    override fun isBuffering(): Boolean? {
-        return currentEventState == PlayerEvents.BUFFERING
-    }
+    override fun isBuffering(): Boolean? = currentEventState == PlayerEvents.BUFFERING
 
-    override fun playerCodec(): String? {
-        return null
-    }
+    override fun playerCodec(): String? = null
 
-    override fun sourceHostName(): String? {
-        return null
-    }
+    override fun sourceHostName(): String? = null
 
-    override fun isLive(): Boolean? {
-        return playerController.isLive
-    }
+    override fun isLive(): Boolean? = playerController.isLive
 
-    override fun sourceUrl(): String? {
-        return playerController.playerConfig?.contentUrl
-    }
+    override fun sourceUrl(): String? = playerController.playerConfig?.contentUrl
 
     override fun isFullScreen(): Boolean? {
         val orientation = context.resources.configuration.orientation
         return orientation == Configuration.ORIENTATION_LANDSCAPE
     }
 
-    override fun getBandWidthData(): BandwidthModel {
-        return BandwidthModel()
-    }
+    override fun getBandWidthData(): BandwidthModel = BandwidthModel()
 
-    override fun getPlayerError(): ErrorModel {
-        return ErrorModel(errorCode, errorMessage)
-    }
+    override fun getPlayerError(): ErrorModel = ErrorModel(errorCode, errorMessage)
 
-    override fun getVideoCodec(): String? {
-        return null
-    }
+    override fun getVideoCodec(): String? = null
 
-    override fun getSoftwareName(): String? {
-        return CastLabsLibraryInfo.SDK_NAME
-    }
+    override fun getSoftwareName(): String? = CastLabsLibraryInfo.SDK_NAME
 
-    override fun getSoftwareVersion(): String? {
-        return CastLabsLibraryInfo.SDK_VERSION
-    }
+    override fun getSoftwareVersion(): String? = CastLabsLibraryInfo.SDK_VERSION
 
     fun release() {
         fastPixDataSDK.release()
